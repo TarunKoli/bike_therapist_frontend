@@ -1,0 +1,117 @@
+.landing {
+  width: 100%;
+}
+.landingContainer,
+.loading {
+  width: 100%;
+  height: calc(100vh - 80px);
+}
+.landingContainer model-viewer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+}
+.loading {
+  background: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* .loading img {
+  height: 100%;
+  width: 100%;
+} */
+.info {
+  font-size: 10rem;
+  color: white;
+  position: absolute;
+  height: 10rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
+}
+.info::-webkit-scrollbar {
+  width: 1rem;
+}
+.info::-webkit-scrollbar-thumb {
+  background-color: var(--admin-border);
+}
+.info::-webkit-scrollbar-track {
+  background-color: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+}
+.head1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  padding-top: 3rem;
+  color: var(--text-warning);
+}
+.head1 h1 {
+  font-size: 5rem;
+  text-align: center;
+}
+.feature1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.feature1 h1 {
+  font-size: 3rem;
+}
+.feature1 p {
+  font-size: 1.6rem;
+}
+.type1 {
+  width: 70%;
+  display: flex;
+}
+.type1 img {
+  height: 10rem;
+  width: 5%;
+}
+.type1 div {
+  width: 47%;
+}
+.feature1 .type1:nth-child(odd) {
+  justify-content: flex-end;
+}
+.feature1 .type1:nth-child(even) {
+  text-align: right;
+}
+
+@media (max-width: 1025px) {
+  .type1 {
+    width: 90%;
+  }
+}
+
+@media (max-width: 550px) {
+  .type1 {
+    width: 100%;
+    align-items: center;
+  }
+  .type1 div {
+    width: 90%;
+    align-self: center;
+  }
+  .feature1 .type1:nth-child(even) {
+    text-align: left;
+    flex-direction: row-reverse;
+  }
+  .type1 img {
+    width: 10%;
+    height: 15rem;
+  }
+  .type1 img:nth-child(even) {
+    transform: rotateY(180deg);
+  }
+}

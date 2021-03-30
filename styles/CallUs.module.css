@@ -1,0 +1,35 @@
+.call {
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),
+    url("/call.webp");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size:contain;
+}
+.container {
+  width: 100%;
+  padding: 5%;
+}
+.title {
+  font-size: 3rem;
+  color: var(--text-warning);
+  letter-spacing: 0.2rem;
+}
+.desc {
+  color: var(--text-white);
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+  margin-top: 2rem;
+}
+.number {
+  font-size: 3rem;
+  color: var(--bg-danger);
+  stroke-width: 0.1rem;
+  /* -webkit-text-stroke-width: 0.1rem;
+  -webkit-text-stroke-color: var(--text-warning); */
+}
+.bar {
+  height: 3rem;
+  width: 100%;
+  background-color: var(--bg-warning);
+}

@@ -1,0 +1,99 @@
+.main {
+  /* height: 145rem; */
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: row;
+}
+.sidepanel {
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid green; */
+  flex-basis: 20%;
+  background-color: var(--admin-side);
+}
+.profile {
+  /* height: 30rem; */
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 2rem 2rem 2rem;
+  align-items: center;
+}
+.details {
+  padding: 2rem;
+  height: 24rem;
+  display: flex;
+  flex-direction: column;
+}
+.bottom {
+  /* border: 2px solid red; */
+  margin-top: auto;
+}
+.profile div:nth-child(1) {
+  height: 16rem;
+  width: 16rem;
+  /* border: 2px solid blue; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rem;
+  background-color: var(--admin-bg);
+}
+.profile div:nth-child(2) {
+  height: 7rem;
+  width: 100%;
+  /* border: 2px solid lawngreen; */
+  text-align: center;
+  color: var(--admin-text);
+}
+.profile p {
+  font-size: 1.4rem;
+}
+.profile h1 {
+  font-size: 3rem;
+}
+
+.dob,
+.email,
+.phone,
+.username {
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.username div,
+.dob div,
+.email div,
+.phone div {
+  width: 50%;
+  padding: 1rem;
+  color: var(--admin-text);
+  font-size: 1.6rem;
+}
+.username div:nth-child(2),
+.dob div:nth-child(2),
+.email div:nth-child(2),
+.phone div:nth-child(2) {
+  text-align: right;
+}
+
+.bottom div:nth-child(1),
+.bottom div:nth-child(2),
+.bottom div:nth-child(3),
+.bottom div:nth-child(4) {
+  height: 7rem;
+  border: 0.1rem solid var(--admin-border);
+  background-color: var(--admin-box);
+  color: var(--admin-text);
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+}
+.bottom div:nth-child(1):hover,
+.bottom div:nth-child(2):hover,
+.bottom div:nth-child(3):hover,
+.bottom div:nth-child(4):hover {
+  background-color: var(--admin-border);
+  cursor: pointer;
+}

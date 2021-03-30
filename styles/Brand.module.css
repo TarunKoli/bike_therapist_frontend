@@ -1,0 +1,48 @@
+.brand {
+  width: 100%;
+}
+.container {
+  width: 100%;
+  padding: 5%;
+}
+
+.primaryHeading {
+  font-size: 6rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.brands {
+  font-family: "Dancing Script", cursive;
+  color: var(--text-danger);
+}
+.logoDiv {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2% 0;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 10rem;
+  flex-basis: 20%;
+  margin-top: 3%;
+  flex-grow: 1;
+}
+
+.logo img {
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .logo {
+    flex-basis: 30%;
+  }
+}
+
+@media (max-width: 400px) {
+  .logo {
+    flex-basis: 50%;
+  }
+}

@@ -1,0 +1,196 @@
+.contactLanding {
+  width: 100%;
+  background-color: #333;
+}
+.contactContainer {
+  width: 100%;
+  padding: 5%;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+}
+
+.leftCol {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 2fr auto;
+  gap: 2rem;
+}
+
+.rightCol {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto auto;
+  gap: 2rem;
+}
+
+.leftTitle h1 {
+  font-size: 5rem;
+  text-transform: capitalize;
+  color: var(--text-danger);
+}
+.leftTitle h1 span {
+  font-family: "Dancing Script", cursive;
+  color: var(--bg-warning);
+}
+.leftTitle p {
+  color: var(--text-white);
+  font-size: 2.2rem;
+  line-height: 4rem;
+  letter-spacing: 0.2rem;
+}
+
+.actualForm {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.formGroup {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(content-fit, 1fr);
+  row-gap: 1.4rem;
+}
+
+.formGroup label {
+  font-size: 2rem;
+  color: var(--text-warning);
+  text-transform: capitalize;
+}
+
+.formGroup input {
+  border-radius: 0.5rem;
+  height: 3.5rem;
+  border: 0;
+  font-size: 2rem;
+  outline: none;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border: 0.2rem solid var(--text-warning);
+}
+
+.formGroup textarea {
+  border-radius: 0.5rem;
+  border: 0;
+  font-size: 2rem;
+  outline: none;
+}
+
+.leftBtnGrp button {
+  width: 20rem;
+  height: 7rem;
+  border: 0;
+  border-radius: 5rem;
+  font-size: 2rem;
+  color: var(--text-danger);
+  background-color: var(--bg-warning);
+  text-transform: capitalize;
+  position: relative;
+  overflow: hidden;
+}
+
+.leftBtnGrp button span {
+  font-family: "Dancing Script", cursive;
+  color: black;
+  transition: color 0.2s;
+}
+.leftBtnGrp button:hover {
+  background-color: var(--text-warning);
+  box-shadow: 0 0 20px var(--text-warning);
+}
+.leftBtnGrp button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -25%;
+  border-radius: 5px;
+  height: 100%;
+  width: 25%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: none;
+}
+
+.leftBtnGrp button:hover::before {
+  animation: move1 1.2s infinite linear;
+}
+@keyframes move1 {
+  0% {
+    left: -30%;
+  }
+  30% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+.addressDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.addressDiv P {
+  color: var(--text-white);
+  font-size: 1.8rem;
+}
+
+.imgDiv {
+  width: 100%;
+}
+.imgDiv img {
+  height: 100%;
+  width: 100%;
+}
+
+.socialDiv ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+.socialDiv ul li {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: baseline;
+  align-items: end;
+}
+.socialDiv ul li div {
+  height: 4rem;
+  width: 4rem;
+  background-color: var(--bg-warning);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bar {
+  height: 3rem;
+  width: 100%;
+  background-color: var(--bg-warning);
+}
+
+@media (max-width: 600px) {
+  .contactContainer {
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+  }
+  .socialDiv ul li {
+    align-items: center;
+  }
+}

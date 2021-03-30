@@ -1,0 +1,95 @@
+.bike {
+  width: 100%;
+}
+.bikeContainer {
+  width: 100%;
+  padding: 3%;
+}
+.title {
+  text-transform: capitalize;
+  font-size: 6rem;
+  text-align: center;
+  text-shadow: 0rem 1rem 1rem #333;
+  margin-bottom: 2%;
+}
+.t0 {
+  font-family: "Dancing Script", cursive;
+  color: var(--text-warning);
+}
+.t1 {
+  color: var(--text-danger);
+}
+.bikeParts {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.left {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-basis: calc(100% / 3);
+}
+.leftContent {
+  width: 30rem;
+  margin-block: 2rem;
+}
+.leftContent h3 {
+  font-size: 3rem;
+  color: var(--text-warning);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.leftContent p {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}
+
+.right {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-basis: calc(100% / 3);
+}
+.rightContent {
+  width: 30rem;
+  margin-block: 2rem;
+}
+.rightContent h3 {
+  font-size: 3rem;
+  color: var(--text-warning);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.rightContent p {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}
+
+.center {
+  flex-basis: calc(100% / 3);
+}
+
+.center img {
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .left,
+  .center,
+  .right {
+    flex-basis: 100%;
+  }
+  .left,
+  .right {
+    align-items: center;
+    text-align: center;
+  }
+}

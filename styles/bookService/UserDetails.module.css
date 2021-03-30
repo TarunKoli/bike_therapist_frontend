@@ -1,0 +1,194 @@
+.userDetails {
+  background-color: #333;
+  width: 100%;
+  padding: 5%;
+}
+.progressSection {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+  justify-content: space-between;
+}
+
+.progressContainer {
+  flex-basis: 22% !important;
+}
+.progressContainer > * {
+  width: 100%;
+}
+
+.progressContainer > * > {
+  width: 100% !important;
+}
+
+.progressBarWrapper {
+  height: 1.3rem;
+  width: 100% !important;
+}
+
+.inputWrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.inputWrapper > div {
+  flex-basis: 33%;
+}
+
+.status {
+  width: 100%;
+  margin-bottom: 6rem;
+}
+
+.infoContainer {
+  margin-top: 1%;
+}
+.info {
+  color: var(--text-white);
+  font-size: 1.8rem;
+}
+.details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.details h1 {
+  color: var(--text-white);
+  flex-basis: 80rem;
+  margin-bottom: 2rem;
+  font-size: 4rem;
+  margin-left: 1rem;
+}
+.inputs1 {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.inputs1 input,
+.inputs1 select {
+  width: 100%;
+  height: 4rem;
+  border-radius: 1rem;
+  border: 2px solid var(--bg-warning);
+  font-size: 1.8rem;
+}
+.inputs1 option {
+  font-size: 1.8rem;
+}
+.inputs1 label,
+.inputs2 label,
+.inputs3 label,
+.inputs4 label {
+  font-size: 1.8rem;
+  width: 70%;
+  color: var(--text-warning);
+  margin-left: 1rem;
+}
+.inputs2 {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.inputs2 input {
+  width: 100%;
+  height: 4rem;
+  border-radius: 1rem;
+  border: 2px solid var(--bg-warning);
+  font-size: 1.8rem;
+}
+
+.inputs3 {
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+}
+.inputs3 > textarea {
+  border-radius: 1rem;
+  outline: none;
+  border: 2px solid var(--bg-warning);
+  padding: 1rem;
+  font-size: 1.8rem;
+}
+.inputs4 {
+  width: 127rem;
+  height: 11rem;
+}
+.inputs4 input {
+  display: block;
+  width: 100%;
+  height: 4rem;
+  border-radius: 1rem;
+  border: 2px solid var(--bg-warning);
+  margin-top: 1rem;
+  font-size: 1.8rem;
+}
+.end {
+  width: 100%;
+  height: 3rem;
+  background-color: var(--bg-warning);
+}
+.bottom {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0 5rem 0;
+}
+.bottom div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.bottom hr {
+  border: 1px solid var(--text-warning);
+  background-color: var(--text-warning);
+  width: 100%;
+}
+.bottom button {
+  background-color: var(--bg-warning);
+  width: 14rem;
+  height: 4rem;
+  font-size: 2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+@media (max-width: 1200px) {
+  .details {
+    margin-left: 0;
+  }
+}
+@media (max-width: 768px) {
+  .progressContainer {
+    flex-basis: 48% !important;
+  }
+  .bottom button {
+    margin-left: 0;
+  }
+  .inputWrapper > div {
+    flex-basis: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .progressContainer {
+    flex-basis: 100% !important;
+  }
+  .bottom button {
+    margin-left: 0;
+  }
+  .inputWrapper > div {
+    flex-basis: 100%;
+  }
+}

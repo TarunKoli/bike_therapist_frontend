@@ -1,0 +1,77 @@
+.landing {
+  width: 100%;
+  background-color: #333;
+  min-height: calc(100vh - 80px);
+  position: relative;
+}
+
+.headingDiv {
+  width: 100%;
+  padding: 4% 5%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  color: var(--text-white);
+  font-size: 6rem;
+  text-transform: capitalize;
+}
+.bike {
+  font-family: "Dancing Script", cursive;
+  color: var(--bg-warning);
+}
+.therapist {
+  color: var(--text-danger);
+}
+.desc {
+  color: var(--text-white);
+  font-size: 2rem;
+  width: 60%;
+  margin: auto;
+  position: relative;
+}
+.svgDiv {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
+.leftComma,
+.rightComma {
+  height: 4.5rem;
+  width: 4.5rem;
+  position: absolute;
+}
+.leftComma img,
+.rightComma img {
+  height: 100%;
+  width: 100%;
+}
+.leftComma {
+  left: -3.2rem;
+  top: -1rem;
+}
+.rightComma {
+  bottom: -2rem;
+  right: 1rem;
+}
+@media (max-width: 900px) {
+  .leftComma {
+    left: -4.4rem;
+    top: -1.7rem;
+  }
+  .rightComma {
+    bottom: -2rem;
+    right: -4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .desc {
+    margin: 3rem auto !important;
+  }
+}

@@ -1,0 +1,52 @@
+.engine {
+  width: 100%;
+  background-color: #333;
+}
+.wrapper {
+  padding: 5% 5% 0 5%;
+  box-sizing: border-box;
+}
+.left {
+  font-size: 2rem;
+  position: relative;
+  padding: 3%;
+}
+
+.left p {
+  letter-spacing: 0.1rem;
+  color: var(--text-warning);
+  text-align: center;
+}
+.leftComma,
+.rightComma {
+  height: 4rem;
+  width: 4rem;
+  position: absolute;
+}
+.leftComma {
+  left: 0rem;
+  top: 1rem;
+}
+.rightComma {
+  right: 2rem;
+  bottom: 0rem;
+}
+.leftComma img,
+.rightComma img {
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .leftComma {
+    left: -2rem;
+    top: 0rem;
+  }
+  .rightComma {
+    right: 2rem;
+    bottom: 0rem;
+  }
+  .left p {
+    padding: 5%;
+  }
+}

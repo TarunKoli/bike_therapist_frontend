@@ -1,0 +1,268 @@
+.footer {
+  width: 100%;
+  background-color: #333;
+  position: relative;
+  overflow: hidden;
+}
+.leftCircle {
+  position: absolute;
+  height: 25rem;
+  width: 25rem;
+  top: -1rem;
+  left: -1rem;
+}
+.leftCircle img {
+  height: 100%;
+  width: 100%;
+}
+.rightCircle {
+  position: absolute;
+  height: 25rem;
+  width: 25rem;
+  top: -1rem;
+  right: -1rem;
+}
+.rightCircle img {
+  height: 100%;
+  width: 100%;
+}
+.footerContent {
+  width: 100%;
+  padding: 5%;
+  position: relative;
+  z-index: 100;
+}
+.why {
+  color: var(--text-white);
+  font-size: 6rem;
+  text-transform: capitalize;
+}
+.bike {
+  font-family: "Dancing Script", cursive;
+  color: var(--text-warning);
+}
+.therapist {
+  color: var(--text-danger);
+}
+.footerCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.footerCard {
+  flex-basis: 30%;
+  margin-top: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.footerImg {
+  flex-basis: 40%;
+  margin-right: -7rem;
+}
+.footerImg img {
+  height: 80%;
+  width: 80%;
+}
+.footerCardContent {
+  flex-basis: 50%;
+  text-align: left;
+}
+.cardTitle {
+  font-size: 1.6rem;
+  color: var(--text-white);
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.cardDesc {
+  font-size: 1.2rem;
+  color: var(--text-white);
+  text-transform: capitalize;
+}
+.footerBannerContainer {
+  margin-top: 4%;
+}
+.footerBanner {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  box-shadow: -0.5rem 0.5rem 1.5rem black;
+  border-radius: 0.5rem;
+  padding: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.bannerSmallCircle {
+  position: absolute;
+  height: 10rem;
+  width: 10rem;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+.bannerSmallCircle img {
+  height: 100%;
+  width: 100%;
+}
+
+.bannerBigCircle {
+  position: absolute;
+  height: 20.7rem;
+  width: 20.7rem;
+  right: -10rem;
+  top: -10rem;
+  z-index: -1;
+}
+.bannerBigCircle img {
+  height: 100%;
+  width: 100%;
+}
+
+.bannerLeft h3 {
+  font-size: 4rem;
+  color: var(--text-white);
+  text-transform: capitalize;
+}
+
+.bannerLeft p {
+  font-size: 3.5rem;
+  color: var(--text-danger);
+  text-transform: capitalize;
+}
+.bannerLeft p span {
+  font-family: "Dancing Script", cursive;
+  color: var(--text-warning);
+}
+.bannerRight button {
+  border: 0;
+  outline: none;
+  font-size: 3rem;
+  background-color: var(--bg-warning);
+  text-transform: capitalize;
+  border-radius: 0.6rem;
+  width: 20rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.bannerRight button:hover {
+  background-color: var(--text-warning);
+  box-shadow: 0 0 20px var(--text-warning);
+  color: black;
+}
+.bannerRight button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -25%;
+  border-radius: 5px;
+  height: 100%;
+  width: 25%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: none;
+}
+
+.bannerRight button:hover::before {
+  animation: move1 1.2s infinite linear;
+}
+@keyframes move1 {
+  0% {
+    left: -30%;
+  }
+  30% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+.actualFooter {
+  width: 100%;
+  padding: 2%;
+  display: flex;
+  justify-content: space-between;
+}
+.footerLinkContainer {
+  flex-basis: 19%;
+  text-align: center;
+}
+.c {
+  font-size: 6rem;
+  color: var(--text-white);
+  font-family: "Dancing Script", cursive;
+  text-transform: uppercase;
+}
+.footerLinkContainer p {
+  color: var(--text-white);
+  font-size: 2rem;
+}
+.footerLinkContainer ul {
+  list-style: none;
+  color: var(--text-white);
+  text-transform: capitalize;
+  font-size: 1.6rem;
+}
+.footerLinkContainer ul li {
+  line-height: 3rem;
+}
+.footerLinkContainer ul li:nth-child(1) {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.socialIcons {
+  display: flex;
+  justify-content: space-between;
+}
+.socialIcons div {
+  margin-right: 2%;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  background-color: var(--bg-warning);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* ///////////media queries/////////// */
+@media (max-width: 900px) {
+  .footerCard {
+    display: block;
+  }
+  .footerCard img {
+    width: 70%;
+  }
+  .actualFooter {
+    flex-direction: column;
+  }
+  .socialIcons {
+    justify-content: space-around;
+  }
+}
+@media (max-width: 600px) {
+  .footerCard {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+  }
+  .socialIcons {
+    margin-top: 2rem;
+  }
+  .bannerLeft,
+  .bannerRight {
+    flex-basis: 100%;
+  }
+  .bannerRight {
+    text-align: center;
+    margin-block: 4%;
+  }
+}

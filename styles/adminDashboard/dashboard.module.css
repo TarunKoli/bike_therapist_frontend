@@ -1,0 +1,465 @@
+.main {
+  display: flex;
+  flex-direction: row;
+}
+.dashboard {
+  flex-basis: 80%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--admin-bg);
+  width: 80%;
+}
+.welcome {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 3rem 0 0 4rem;
+}
+.welcome h1 {
+  font-size: 3.5rem;
+  color: var(--admin-text);
+}
+.welcome p {
+  font-size: 1.8rem;
+  color: var(--admin-text);
+}
+.hide {
+  flex-basis: 20%;
+  height: 100%;
+  color: var(--admin-text);
+  font-weight: bolder;
+  font-size: 5rem;
+  display: none;
+}
+
+.first,
+.second,
+.third,
+.fourth {
+  display: flex;
+  padding: 2rem 4rem 2rem 4rem;
+}
+
+.first {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.f1,
+.f2,
+.f3,
+.f4 {
+  min-height: 12rem;
+  border: 0.2rem solid var(--admin-border);
+  width: 22%;
+  background-color: var(--admin-box);
+  box-shadow: 0 0 1rem rgb(34, 34, 34);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.icon {
+  width: 38%;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info {
+  width: 58%;
+}
+.icon div {
+  height: 8rem;
+  width: 8rem;
+  border-radius: 50%;
+  background-color: rgba(253, 214, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg-warning);
+}
+.info div {
+  color: var(--admin-text);
+  text-align: right;
+  font-size: 1.4rem;
+  line-height: 4rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding-right: 1rem;
+}
+
+.s1,
+.s2,
+.s3,
+.s4 {
+  display: flex;
+  flex-direction: column;
+  height: 18rem;
+  border: 0.2rem solid var(--admin-border);
+  width: 25%;
+  background-color: var(--admin-box);
+  box-shadow: 0 0 1rem rgb(34, 34, 34);
+}
+
+.s1 div:nth-child(1),
+.s2 div:nth-child(1),
+.s3 div:nth-child(1),
+.s4 div:nth-child(1) {
+  height: 25%;
+  padding: 1.5rem 2rem 0 2rem;
+  color: var(--admin-text);
+}
+.progress {
+  height: 50%;
+  padding: 2rem 0 0 2rem;
+  color: var(--admin-text);
+}
+.progress h1 {
+  font-size: 4rem;
+}
+.progress progress {
+  font-size: 1.5rem;
+  width: 90%;
+  background-color: var(--bg-warning);
+  height: 0.5rem;
+  border-radius: 1rem;
+}
+.progress progress[value]::-webkit-progress-value {
+  background-color: var(--bg-warning);
+}
+.progress progress[value]::-webkit-progress-bar {
+  background-color: var(--admin-bg);
+}
+.s1 div:nth-child(3),
+.s2 div:nth-child(3),
+.s3 div:nth-child(3),
+.s4 div:nth-child(3) {
+  height: 25%;
+  color: var(--admin-text);
+  padding: 0 2rem;
+  font-size: 1.4rem;
+}
+
+.third {
+  justify-content: space-between;
+}
+.t1,
+.t2 {
+  height: 40rem;
+  border: 0.2rem solid var(--admin-border);
+  background-color: var(--admin-box);
+  box-shadow: 0 0 1rem rgb(34, 34, 34);
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  height: 15%;
+  border-bottom: 0.2rem solid var(--admin-border);
+  padding: 0.5rem 0 0 2rem;
+  color: var(--admin-text);
+  font-size: 3rem;
+}
+.table1,
+.table2 {
+  height: 70%;
+  width: 100%;
+  font-size: 1.7rem;
+  color: var(--admin-text);
+  overflow: scroll;
+}
+.table1::-webkit-scrollbar,
+.table2::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.table1::-webkit-scrollbar-track,
+.table2::-webkit-scrollbar-track {
+  background-color: var(--admin-box);
+}
+.table1::-webkit-scrollbar-thumb,
+.table2::-webkit-scrollbar-thumb {
+  background-color: var(--admin-border);
+  border-radius: 0.2rem;
+}
+.table1 table,
+.table2 table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table1 th,
+.table1 td,
+.table2 th,
+.table2 td {
+  padding: 1rem;
+}
+.table1 td:nth-child(1),
+.table2 td:nth-child(1) {
+  color: var(--bg-warning);
+}
+
+.view {
+  height: 15%;
+  border-top: 0.2rem solid var(--admin-border);
+  font-size: 1.5rem;
+  color: var(--admin-text);
+  padding-top: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.fo1 {
+  height: 40rem;
+  border: 0.2rem solid var(--admin-border);
+  background-color: var(--admin-box);
+  box-shadow: 0 0 1rem rgb(34, 34, 34);
+  width: 100%;
+}
+
+.sidepanel {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 20%;
+  width: 20%;
+  background-color: var(--admin-side);
+  height: 100vh;
+  overflow-y: scroll;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 20%;
+}
+.sidepanel::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.sidepanel::-webkit-scrollbar-track {
+  background-color: var(--admin-side);
+}
+.sidepanel::-webkit-scrollbar-thumb {
+  background-color: rgb(70, 70, 70);
+  border-radius: 0.2rem;
+}
+.profile {
+  /* height: 30rem; */
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 2rem 2rem 2rem;
+  align-items: center;
+}
+.sidepanel span {
+  position: absolute;
+  color: white;
+  font-size: 3rem;
+  margin-left: 90%;
+  margin-top: 5%;
+  display: none;
+}
+.avatar {
+  overflow: hidden;
+  position: relative;
+}
+.avatar:hover > .uploadPic {
+  opacity: 1;
+}
+.uploadPic {
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
+  opacity: 0;
+  transition: 0.2s linear;
+}
+.uploadPic form {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.uploadPic label {
+  width: 100%;
+  height: 100%;
+}
+.uploadPic label > p {
+  font-size: 1.6rem;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+}
+.uploadPic input {
+  display: none;
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.name {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.name input {
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: #fff;
+  font-size: 2.2rem;
+  width: 100%;
+  text-align: center;
+}
+.name > i {
+  font-size: 2rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.details {
+  padding: 2rem;
+  height: 24rem;
+  display: flex;
+  color: var(--admin-text);
+  align-items: center;
+  justify-content: center;
+}
+
+.details table {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 1.8rem;
+}
+.details table td input {
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: #fff;
+  font-size: 1.6rem;
+  width: 100%;
+  text-align: center;
+}
+.details table i {
+  cursor: pointer;
+}
+
+.bottom {
+  margin-top: auto;
+}
+.profile div:nth-child(1) {
+  height: 16rem;
+  width: 16rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rem;
+  background-color: var(--admin-bg);
+}
+.profile div:nth-child(2) {
+  height: 7rem;
+  width: 100%;
+  text-align: center;
+  color: var(--admin-text);
+}
+.profile p {
+  font-size: 1.4rem;
+}
+.profile h1 {
+  font-size: 3rem;
+}
+
+.bottom div:nth-child(1),
+.bottom div:nth-child(2),
+.bottom div:nth-child(3),
+.bottom div:nth-child(4) {
+  height: 7rem;
+  border: 0.1rem solid var(--admin-border);
+  background-color: var(--admin-box);
+  color: var(--admin-text);
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+}
+.bottom div:nth-child(1):hover,
+.bottom div:nth-child(2):hover,
+.bottom div:nth-child(3):hover,
+.bottom div:nth-child(4):hover {
+  background-color: var(--admin-border);
+  cursor: pointer;
+}
+
+@media (max-width: 1210px) {
+  .hide {
+    display: block;
+  }
+  .sidepanel span {
+    display: block;
+  }
+  .dashboard {
+    width: 100%;
+  }
+  .sidepanel {
+    position: fixed;
+    width: 40%;
+    left: -50%;
+    transition: 0.5s linear;
+    z-index: 1000;
+  }
+  .hide2 {
+    left: 0%;
+    width: 70%;
+  }
+  .first,
+  .second,
+  .third,
+  .fourth {
+    flex-wrap: wrap;
+  }
+  .f1,
+  .f2,
+  .f3,
+  .f4,
+  .s1,
+  .s2,
+  .s3,
+  .s4 {
+    width: 50%;
+  }
+  .t1,
+  .t2 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .dashboard {
+    width: 100%;
+  }
+  .first,
+  .second,
+  .third,
+  .fourth {
+    flex-wrap: wrap;
+    padding: 2rem;
+  }
+  .welcome {
+    padding-left: 2rem;
+  }
+  .f1,
+  .f2,
+  .f3,
+  .f4,
+  .s1,
+  .s2,
+  .s3,
+  .s4,
+  .t1,
+  .t2 {
+    width: 100%;
+  }
+  .fo1 {
+    overflow: scroll;
+  }
+}

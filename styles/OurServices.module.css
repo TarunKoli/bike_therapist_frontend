@@ -1,0 +1,96 @@
+.ourServices {
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),
+    url("/service.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  width: 100%;
+  padding: 4%;
+}
+.headingPrimary,
+.bgWarning {
+  font-size: 6rem;
+  color: var(--text-white);
+  font-family: "Dancing Script", cursive;
+  text-transform: capitalize;
+  text-align: center;
+}
+.bgWarning {
+  color: var(--text-warning);
+}
+
+.serviceSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+.serviceContainer {
+  width: 16rem;
+  height: 32rem;
+  border-radius: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--bg-warning);
+  margin-top: 2rem;
+}
+
+.iconImg {
+  height: 17rem;
+  width: 17rem;
+  border-radius: 50%;
+  position: relative;
+  margin-top: -0.5rem;
+}
+
+.iconImg img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: -8%;
+}
+.serviceCount {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-top: -4rem;
+}
+.serviceContent {
+  font-size: 2rem;
+  text-transform: capitalize;
+  word-wrap: break-word;
+  width: 70%;
+  text-align: center;
+  margin-top: -1rem;
+}
+
+.serviceContainer hr {
+  width: 50%;
+  border: 0;
+  background-color: #333;
+  height: 0.2rem;
+}
+.serviceFooter {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: -2rem;
+}
+
+@media (max-width: 900px) and (min-width: 501px) {
+  .serviceContainer {
+    flex-basis: 20%;
+  }
+}
+
+@media (max-width: 500px) {
+  .serviceContainer {
+    flex-basis: 30%;
+  }
+}

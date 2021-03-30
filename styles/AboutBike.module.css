@@ -1,0 +1,143 @@
+.aboutBike {
+  width: 100%;
+  background-color: #333;
+}
+.container {
+  width: 100%;
+  padding: 5%;
+}
+.primaryHeading {
+  font-size: 6rem;
+  color: var(--text-white);
+  text-transform: capitalize;
+  text-align: left;
+  text-shadow: 0rem 1rem 1rem #000;
+  margin-bottom: 2%;
+}
+
+.bike {
+  font-family: "Dancing Script", cursive;
+  color: var(--bg-warning);
+}
+
+.textDanger {
+  color: var(--text-danger);
+}
+
+.containerContent {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.containerContent div {
+  flex-basis: 50%;
+  flex-grow: 1;
+}
+.imgContainer {
+  display: flex;
+  align-items: flex-end;
+}
+.imgContainer img {
+  height: 80%;
+  width: 100%;
+}
+.actualContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.actualContent p {
+  font-size: 2rem;
+  color: var(--text-white);
+  font-weight: 100;
+  line-height: 3rem;
+  letter-spacing: 0.2rem;
+}
+.btnGrp {
+  margin-top: 2%;
+}
+.btnGrp button {
+  border: 0;
+  outline: none;
+  height: 4rem;
+  width: 13rem;
+  background-color: var(--bg-warning);
+  border-radius: 0.5rem;
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  cursor: pointer;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+.btnGrp button:hover {
+  background-color: var(--text-warning);
+  box-shadow: 0 0 20px var(--text-warning);
+  color: black;
+}
+.btnGrp button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -25%;
+  border-radius: 5px;
+  height: 100%;
+  width: 25%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: none;
+}
+
+.btnGrp button:hover::before {
+  animation: move1 1.2s infinite linear;
+}
+@keyframes move1 {
+  0% {
+    left: -30%;
+  }
+  30% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+.hideLg {
+  display: block;
+}
+
+.showMd {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .primaryHeading {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .imgContainer {
+    display: flex;
+    align-items: flex-start;
+  }
+  .hideLg {
+    display: none;
+  }
+  .showMd {
+    display: block;
+    text-align: center !important;
+  }
+  .containerContent div {
+    flex-basis: 100%;
+  }
+  .actualContent {
+    order: 1;
+  }
+}

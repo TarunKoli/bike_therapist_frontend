@@ -1,0 +1,60 @@
+.engine {
+  width: 100%;
+  background-color: var(--bg-warning);
+}
+.wrapper {
+  padding: 5% 5% 0 5%;
+  box-sizing: border-box;
+}
+.left {
+  font-size: 2rem;
+  position: relative;
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.left p {
+  letter-spacing: 0.1rem;
+  text-align: center;
+}
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.leftComma,
+.rightComma {
+  height: 4rem;
+  width: 4rem;
+  position: absolute;
+}
+.leftComma {
+  left: 7rem;
+  top: 6rem;
+}
+.rightComma {
+  right: 6rem;
+  bottom: 7rem;
+}
+.leftComma img,
+.rightComma img {
+  filter: saturate(0) brightness(0);
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .leftComma {
+    left: -2rem;
+    top: 0rem;
+  }
+  .rightComma {
+    right: 2rem;
+    bottom: 0rem;
+  }
+  .left p {
+    padding: 5%;
+  }
+}

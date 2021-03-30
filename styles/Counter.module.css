@@ -1,0 +1,46 @@
+.counter {
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),
+    url("/counter-bg.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.containerDiv {
+  width: 100%;
+  padding: 8% 5%;
+}
+
+.primaryHeading {
+  text-align: center;
+  color: var(--text-white);
+  text-transform: capitalize;
+  font-size: 5rem;
+}
+.counterDiv {
+  margin-top: 4%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.count {
+  flex-basis: 30%;
+  text-align: center;
+}
+.actualCount {
+  font-size: 7rem;
+  color: var(--text-warning);
+  font-weight: bold;
+}
+.countDesc {
+  font-size: 3rem;
+  color: var(--bg-danger);
+}
+
+@media (max-width: 500px) {
+  .count {
+    flex-basis: 100%;
+    margin: 4% 0;
+  }
+}

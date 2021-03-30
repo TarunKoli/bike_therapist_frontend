@@ -1,0 +1,193 @@
+.client {
+  width: 100%;
+  background-color: #333;
+}
+.containerDiv {
+  width: 100%;
+  padding: 5%;
+}
+
+.title {
+  font-size: 5rem;
+  text-align: center;
+  text-transform: capitalize;
+  color: var(--text-white);
+  text-shadow: 0rem 1rem 1rem #000;
+}
+.title span {
+  font-family: "Dancing Script", cursive;
+  color: var(--bg-warning);
+}
+.underline {
+  height: 2rem;
+  width: 50%;
+  background-color: var(--bg-warning);
+  margin: 5% auto;
+  border-radius: 5rem;
+  position: relative;
+}
+
+.underline::after {
+  content: "\f007";
+  font-family: "Font Awesome 5 Free";
+  height: 7rem;
+  width: 7rem;
+  background-color: orange;
+  position: absolute;
+  border-radius: 50%;
+  top: -120%;
+  right: 40%;
+  transform: translateX(40%);
+  box-shadow: -1rem 1rem 1rem #000;
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.underline::before {
+  content: "\f007";
+  font-family: "Font Awesome 5 Free";
+  height: 7rem;
+  width: 7rem;
+  background-color: orange;
+  position: absolute;
+  border-radius: 50%;
+  top: -120%;
+  left: 35%;
+  transform: translateX(40%);
+  box-shadow: -1rem 1rem 1rem #000;
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carouselContainer {
+  width: 70%;
+  margin: 0 auto;
+  min-height: 25rem;
+  background-color: #444;
+  box-shadow: -1rem 1rem 1rem #000;
+  position: relative;
+}
+
+.carouselBtn {
+  position: absolute;
+  font-size: 4rem;
+  color: var(--text-warning);
+  box-shadow: -1rem 1rem 1rem #000;
+  top: 0;
+  background-color: #444;
+  cursor: pointer;
+  width: 6rem;
+  text-align: center;
+}
+.prevBtn {
+  left: -10rem;
+}
+.nextBtn {
+  right: -10rem;
+}
+
+.carouselDiv {
+  width: 70%;
+  margin: 0 auto;
+  box-shadow: -1px 4px 24px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 4px 24px 6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 4px 24px 6px rgba(0, 0, 0, 0.75);
+  padding: 5% 10%;
+  position: relative;
+}
+
+.carouselTitle {
+  font-size: 2.5rem;
+  color: var(--text-warning);
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+}
+
+.titleUnderline {
+  height: 0.3rem !important;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  background-color: var(--bg-warning);
+  width: 100%;
+}
+
+.carouselContent {
+  font-size: 2rem;
+  color: var(--text-white);
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  margin-top: 1%;
+}
+
+.invertedCommaEnd,
+.invertedCommaStart {
+  height: 6rem;
+  width: 6rem;
+  position: absolute;
+}
+.invertedCommaEnd img,
+.invertedCommaStart img {
+  height: 100%;
+  width: 100%;
+}
+.invertedCommaStart {
+  top: 0%;
+  left: 0%;
+}
+.invertedCommaEnd {
+  bottom: 0%;
+  right: 0%;
+}
+
+.bar {
+  height: 3rem;
+  width: 100%;
+  background-color: var(--bg-warning);
+  margin-top: 2%;
+}
+
+@media (max-width: 1024px) {
+  .underline::after {
+    right: 35%;
+  }
+  .underline::before {
+    left: 35%;
+  }
+  .bar {
+    margin-top: 2%;
+  }
+}
+
+@media (max-width: 768px) {
+  .underline::after {
+    right: 30%;
+  }
+  .underline::before {
+    left: 20%;
+  }
+  .bar {
+    margin-top: 6%;
+  }
+}
+
+@media (max-width: 600px) {
+  .underline::after {
+    right: 20%;
+  }
+  .underline::before {
+    left: 8%;
+  }
+  .invertedCommaStart,
+  .invertedCommaEnd {
+    height: 4rem;
+    width: 4rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .bar {
+    margin-top: 8%;
+  }
+}
