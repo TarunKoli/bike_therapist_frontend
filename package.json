@@ -1,5 +1,5 @@
 {
-  "name": "bike_therapist_frontend",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,8 +8,20 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "10.1.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "@google/model-viewer": "^1.5.0",
+    "axios": "^0.21.1",
+    "chart.js": "^2.9.4",
+    "firebase": "^8.2.10",
+    "moment": "^2.29.1",
+    "next": "10.0.7",
+    "next-pwa": "^5.0.5",
+    "nookies": "^2.5.2",
+    "randomcolor": "^0.6.2",
+    "react": "17.0.1",
+    "react-chartjs-2": "^2.11.1",
+    "react-dom": "17.0.1",
+    "react-toastify": "^7.0.3",
+    "socket.io-client": "^4.0.0",
+    "webpack": "^4.46.0"
   }
 }
