@@ -16,6 +16,10 @@ export let socket;
 const UserDetails = () => {
   const [state, dispatch] = useContext(BookingContext);
   const [error, setError] = useState(null);
+  const conditions =
+    "https://firebasestorage.googleapis.com/v0/b/bike-therapist.appspot.com/o/BIKE%20THERAPIST%20TERMS%20AND%20CONDITION.pdf?alt=media&token=92c10b31-0520-49c9-a29e-3da4cbc66d6d";
+  const policy =
+    "https://firebasestorage.googleapis.com/v0/b/bike-therapist.appspot.com/o/CANCELLATION%20POLICY.pdf?alt=media&token=ee2b9a72-670a-4ad1-ad86-89a9994e01cf";
   const router = useRouter();
 
   useEffect(() => {
@@ -153,7 +157,8 @@ const UserDetails = () => {
       state.city &&
       state.state &&
       state.postalCode &&
-      state.dob
+      state.dob &&
+      document.getElementById("tc").checked
     ) {
       try {
         const validationData = await axios({
@@ -193,7 +198,9 @@ const UserDetails = () => {
         setError(err.response.data.msg);
       }
     } else {
-      window.alert("please fill the required field");
+      if (!document.getElementById("tc").checked)
+        window.alert("Please accept terms and conditions");
+      else window.alert("please fill the required field");
     }
   };
 
@@ -420,6 +427,13 @@ const UserDetails = () => {
               }}
               required
             ></textarea>
+          </div>
+          <div className={styles.checkbox}>
+            <input type="checkbox" name="t&c" id="tc" required />
+            <label>
+              I, agree to the <a href={conditions}>terms and conditions</a> of
+              bikeTherapist
+            </label>
           </div>
         </div>
         <div className={styles.bottom}>

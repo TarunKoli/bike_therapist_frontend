@@ -41,6 +41,11 @@ const cardData = [
 ];
 
 const Footer = () => {
+  const conditions =
+    "https://firebasestorage.googleapis.com/v0/b/bike-therapist.appspot.com/o/BIKE%20THERAPIST%20TERMS%20AND%20CONDITION.pdf?alt=media&token=92c10b31-0520-49c9-a29e-3da4cbc66d6d";
+  const policy =
+    "https://firebasestorage.googleapis.com/v0/b/bike-therapist.appspot.com/o/CANCELLATION%20POLICY.pdf?alt=media&token=ee2b9a72-670a-4ad1-ad86-89a9994e01cf";
+
   return (
     <section className={style.footer} id="footer">
       <div className={style.leftCircle}>
@@ -109,16 +114,24 @@ const Footer = () => {
         <div className={style.footerLinkContainer}>
           <ul>
             <li>company</li>
-            <li>about us</li>
+            <li>
+              <Link href="/about">about us</Link>
+            </li>
             <li>career</li>
-            <li>contact us</li>
+            <li>
+              <Link href="/contact-us">contact us</Link>
+            </li>
           </ul>
         </div>
         <div className={style.footerLinkContainer}>
           <ul>
             <li>further information</li>
-            <li>terms & conditions</li>
-            <li>privacy and policy</li>
+            <li>
+              <a href={conditions}>terms & conditions</a>
+            </li>
+            <li>
+              <a href={policy}>privacy and policy</a>
+            </li>
           </ul>
         </div>
         <div className={style.footerLinkContainer}>
