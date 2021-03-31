@@ -17,6 +17,7 @@ const SidePanel = ({ adminRes }) => {
   const [phone, setPhone] = useState(adminRes.phone.toString());
   const [showBtn, setShowBtn] = useState(false);
   const [img, setImg] = useState(adminRes.profileImage);
+  const [img2, setImg2] = useState(adminRes.profileImage);
   const [progress, setProgress] = useState(0);
   const [imgUrl, setImgUrl] = useState("");
   const router = useRouter();
@@ -171,7 +172,7 @@ const SidePanel = ({ adminRes }) => {
       <div className={styles.profile}>
         <div className={styles.avatar}>
           {imgUrl ? (
-            <img src={imgUrl} alt="avatar image" />
+            <img src={img2} alt="avatar image" />
           ) : (
             <img src="/avatar.svg" alt="avatar image" />
           )}
@@ -190,6 +191,13 @@ const SidePanel = ({ adminRes }) => {
                   onChange={(e) => {
                     setImgUrl(URL.createObjectURL(e.target.files[0]));
                     setImg(e.target.files[0]);
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                      if (reader.readyState === 2) {
+                        setImg2(reader.result);
+                      }
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
                   }}
                 />
               </label>
