@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import moment from "moment";
+import { SideContext } from "./SideContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../../styles/adminDashboard/invoices.module.css";
@@ -31,6 +32,11 @@ const Payments = ({ clientsData, paymentData }) => {
     paymentId: "",
     type: "",
   });
+  const [hide, setHide] = useContext(SideContext);
+
+  const handleHide = () => {
+    setHide((prev) => !prev);
+  };
 
   useEffect(() => {
     if (error) {
@@ -107,6 +113,9 @@ const Payments = ({ clientsData, paymentData }) => {
         <div>
           <h1>Payments</h1>
           <p>Dashboard / Payments</p>
+        </div>
+        <div className={styles.hide} onClick={handleHide}>
+          <i className="fas fa-user-circle"></i>
         </div>
       </div>
       <div className={styles.search}>

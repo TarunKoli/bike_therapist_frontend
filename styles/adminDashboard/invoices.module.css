@@ -12,6 +12,9 @@
 }
 
 .invoice {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 3rem 0 0 4rem;
 }
 .invoice h1 {
@@ -21,6 +24,14 @@
 .invoice p {
   font-size: 1.8rem;
   color: var(--admin-text);
+}
+.hide {
+  flex-basis: 20%;
+  height: 100%;
+  color: var(--admin-text);
+  font-weight: bolder;
+  font-size: 5rem;
+  display: none;
 }
 .search {
   display: flex;
@@ -348,6 +359,9 @@
 }
 
 @media (max-width: 1210px) {
+  .hide {
+    display: block;
+  }
   .invoices {
     flex-basis: 100%;
     width: 100%;
