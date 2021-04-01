@@ -14,7 +14,14 @@
   font-size: 1.6rem !important;
   text-transform: capitalize;
 }
-
+.spin {
+  /* width: 5.5%;
+  height: 70%; */
+  width: 2.3rem;
+  height: 2.3rem;
+  margin-left: -2rem;
+  margin-right: 1rem;
+}
 .testSignupContainer {
   width: 60%;
   margin: auto;
@@ -208,7 +215,8 @@
   width: 100%;
   margin-top: 8%;
 }
-.btnGrp button {
+.btnGrp button,
+.btnGrp .spinner {
   height: 100%;
   width: 100%;
   outline: none;
@@ -221,7 +229,13 @@
   position: relative;
   overflow: hidden;
 }
-
+.btnGrp .spinner {
+  display: block;
+  font-weight: 500;
+}
+.btnGrp .hide {
+  display: none;
+}
 .btnGrp button::before {
   content: "";
   position: absolute;

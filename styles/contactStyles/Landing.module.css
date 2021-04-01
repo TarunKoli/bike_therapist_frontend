@@ -2,6 +2,17 @@
   width: 100%;
   background-color: #333;
 }
+.myToast {
+  font-size: 1.5rem !important;
+  text-transform: capitalize;
+}
+.spin {
+  width: 14%;
+  height: 40%;
+  margin-left: -1rem;
+  margin-right: 1rem;
+}
+
 .contactContainer {
   width: 100%;
   padding: 5%;
@@ -81,6 +92,7 @@
   outline: none;
 }
 
+.leftBtnGrp .spinner,
 .leftBtnGrp button {
   width: 20rem;
   height: 7rem;
@@ -93,7 +105,14 @@
   position: relative;
   overflow: hidden;
 }
-
+.leftBtnGrp .spinner {
+  display: block;
+  font-weight: bolder;
+  color: black;
+}
+.leftBtnGrp .hide {
+  display: none;
+}
 .leftBtnGrp button span {
   font-family: "Dancing Script", cursive;
   color: black;

@@ -11,6 +11,7 @@ const AuthForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [spin, setSpin] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -89,6 +90,7 @@ const AuthForm = () => {
   };
   const handleSignin = async (e) => {
     e.preventDefault();
+    setSpin((prev) => !prev);
     try {
       const res = await axios({
         url: "http://localhost:8080/api/signin",
@@ -104,6 +106,7 @@ const AuthForm = () => {
         setEmail("");
         setPassword("");
         setError(null);
+        setSpin((prev) => !prev);
         toast.success("login successful", {
           position: "top-center",
           autoClose: 5000,
@@ -116,6 +119,7 @@ const AuthForm = () => {
         router.replace("/admin-dashboard");
       }
     } catch (err) {
+      setSpin((prev) => !prev);
       setError(err.response.data.msg);
     }
   };
@@ -195,7 +199,21 @@ const AuthForm = () => {
                 <label htmlFor="signinPassword">password</label>
               </div>
               <div className={style.btnGrp}>
-                <button type="submit">sign in</button>
+                <button className={spin ? `${style.hide}` : ``} type="submit">
+                  sign in
+                </button>
+                <button
+                  type="button"
+                  className={spin ? `${style.spinner}` : `${style.hide}`}
+                  disabled
+                >
+                  <span
+                    className={`spinner-border spinner-border-sm ${style.spin}`}
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Signing in...
+                </button>
               </div>
               <p className={style.forgotPassword}>
                 <span className="text-warning">forgot password ?</span>{" "}
