@@ -2,8 +2,11 @@ import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { BookingContext, ACTIONS } from "../BookingContext";
 import bookStyle from "../../styles/BookService.module.css";
+import Data from "./Brands.json";
+
 const BookService = () => {
   const [state, dispatch] = useContext(BookingContext);
+  const [varient, setVarient] = useState([]);
   const router = useRouter();
   const handleNext = () => {
     if (
@@ -15,6 +18,29 @@ const BookService = () => {
       router.push("/fix-date");
     } else {
       alert("please fill the required field !!!");
+    }
+  };
+
+  const handleBrand = (e) => {
+    dispatch({
+      type: ACTIONS.brand,
+      payload: { brand: e.target.value },
+    });
+    console.log(e.target.value);
+    if (e.target.value === "HERO") setVarient(Data[0].Hero);
+    else if (e.target.value === "HONDA") setVarient(Data[0].Honda);
+    else if (e.target.value === "BAJAJ") setVarient(Data[0].Bajaj);
+    else if (e.target.value === "TVS") setVarient(Data[0].Tvs);
+    else if (e.target.value === "YAMAHA") setVarient(Data[0].Yamaha);
+    else if (e.target.value === "ROYAL ENFIELD")
+      setVarient(Data[0].RoyalEnfield);
+    else if (e.target.value === "KTM") setVarient(Data[0].Ktm);
+    else if (e.target.value === "VESPA") setVarient(Data[0].Vespa);
+    else if (e.target.value === "APRILIA") setVarient(Data[0].Aprilia);
+    else if (e.target.value === "SUZUKI") setVarient(Data[0].Suzuki);
+    else if (e.target.value === "HERO HONDA") setVarient(Data[0].HeroHonda);
+    else {
+      setVarient([]);
     }
   };
 
@@ -58,24 +84,15 @@ const BookService = () => {
         <div className={bookStyle.detailsSection}>
           <div className={bookStyle.detailsContainer}>
             <label htmlFor="vehicle">velhicle brand</label>
-            <select
-              name="brandlist"
-              id="brand"
-              onChange={(e) => {
-                dispatch({
-                  type: ACTIONS.brand,
-                  payload: { brand: e.target.value },
-                });
-              }}
-            >
+            <select name="brandlist" id="brand" onChange={handleBrand}>
               <option value="">[--select brand--]</option>
-              <option value="brand1">brand1</option>
-              <option value="brand2">brand2</option>
-              <option value="brand3">brand3</option>
-              <option value="brand4">brand4</option>
-              <option value="brand5">brand5</option>
-              <option value="brand6">brand6</option>
-              <option value="brand7">brand7</option>
+              {Data[0].Brands.map((brand, index) => {
+                return (
+                  <option key={index} value={brand}>
+                    {brand}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className={bookStyle.detailsContainer}>
@@ -91,13 +108,13 @@ const BookService = () => {
               }}
             >
               <option value="">[--select varient--]</option>
-              <option value="variant1">varient1</option>
-              <option value="varient2">varient2</option>
-              <option value="varient3">varient3</option>
-              <option value="varient4">varient4</option>
-              <option value="varient5">varient5</option>
-              <option value="varient6">varient6</option>
-              <option value="varient7">varient7</option>
+              {varient.map((varient, index) => {
+                return (
+                  <option key={index} value={varient}>
+                    {varient}
+                  </option>
+                );
+              })}
             </select>
           </div>
         </div>
