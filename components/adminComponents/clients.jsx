@@ -4,6 +4,7 @@ import { SideContext } from "./SideContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "../../styles/adminDashboard/invoices.module.css";
+import Status from "./Status";
 
 const Payments = ({ clientsData, paymentData }) => {
   const [modal, setModal] = useState(false);
@@ -278,7 +279,9 @@ const Payments = ({ clientsData, paymentData }) => {
                   <td>{moment(client.bookingDate).format("MMMM Do YYYY")}</td>
                   <td>{client.bookingTime}</td>
                   <td>{client.phone}</td>
-                  <td>{client.status}</td>
+                  <td className={styles.decide}>
+                    <Status id={client._id} status={client.status} />
+                  </td>
                 </tr>
               );
             })}
