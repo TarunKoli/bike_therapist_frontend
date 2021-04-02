@@ -8,7 +8,6 @@ import styles from "../../styles/adminDashboard/dashboard.module.css";
 
 const DashBoard = (props) => {
   const [clients, setClients] = useState(props.clientsData);
-
   const [payments, setPayments] = useState(props.paymentData);
 
   const [hide, setHide] = useContext(SideContext);

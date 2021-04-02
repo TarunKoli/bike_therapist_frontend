@@ -39,9 +39,7 @@ const BookService = () => {
     else if (e.target.value === "APRILIA") setVarient(Data[0].Aprilia);
     else if (e.target.value === "SUZUKI") setVarient(Data[0].Suzuki);
     else if (e.target.value === "HERO HONDA") setVarient(Data[0].HeroHonda);
-    else {
-      setVarient([]);
-    }
+    else setVarient([]);
   };
 
   return (
