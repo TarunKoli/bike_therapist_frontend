@@ -59,20 +59,20 @@ const UserDetails = () => {
         key: process.env.NEXT_PUBLIC_PAYMENT_KEY,
         amount: resOptions.data.amount,
         currency: resOptions.data.currency,
-        name: "BiketTherapist",
+        name: "BikeTherapist",
         description: "Test Transaction",
         image: "http://localhost:3000/android-chrome-192x192.png",
         order_id: resOptions.data.id,
         prefill: {
-          name: state.name,
           email: state.email,
           contact: state.phone,
         },
         notes: {
           address: "Razorpay Corporate Office",
+          name: state.name,
         },
         theme: {
-          color: "#29ff5e",
+          color: "#fdd600",
         },
         handler: async function (response) {
           try {
@@ -105,6 +105,16 @@ const UserDetails = () => {
               socket = io("http://localhost:8080");
               socket.emit("newBooking", { msg: "new booking" });
 
+              axios({
+                url: "http://localhost:8080/api/paymentId",
+                method: "PATCH",
+                data: {
+                  id: response.razorpay_payment_id,
+                  email: state.email,
+                },
+              }).catch((err) => {
+                console.log(err);
+              });
               //send req to the backend for the invoice and download it
               axios({
                 url: "http://localhost:8080/api/generate-invoice",

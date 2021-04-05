@@ -28,9 +28,10 @@ const Payments = ({ clientsData, paymentData }) => {
     dob: "",
   });
   const [payment, setPayment] = useState({
-    _id: "",
-    amount: "",
     paymentId: "",
+    orderId: "",
+    amount: "",
+    paidDate: "",
     type: "",
   });
 
@@ -69,7 +70,7 @@ const Payments = ({ clientsData, paymentData }) => {
       return setError("No User Found");
     }
     var payment = paymentData.filter((payment) => {
-      return payment.email === client[0].email;
+      return payment.paymentId === client[0].payId;
     });
 
     setClient({
@@ -89,9 +90,10 @@ const Payments = ({ clientsData, paymentData }) => {
       dob: client[0].dob,
     });
     setPayment({
-      _id: payment[0]._id,
-      amount: payment[0].amount,
       paymentId: payment[0].paymentId,
+      orderId: payment[0].orderId,
+      amount: payment[0].amount,
+      paidDate: payment[0].createdAt,
       type: payment[0].type,
     });
     handleModal();
@@ -178,7 +180,7 @@ const Payments = ({ clientsData, paymentData }) => {
                   <p>#{client._id}</p>
                   <h3>
                     <span>Date : </span>
-                    {client.bookingDate.split("T")[0] +
+                    {moment(client.bookingDate).format("MMMM Do YYYY") +
                       " At " +
                       client.bookingTime}
                   </h3>
@@ -202,7 +204,7 @@ const Payments = ({ clientsData, paymentData }) => {
                   </p>
                   <p>
                     <span>Dob : </span>
-                    {client.dob}
+                    {moment(client.dob).format("MMMM Do YYYY")}
                   </p>
                   <p>
                     <span>Address : </span>H.no-{client.houseNumber}, Street.no-
@@ -214,21 +216,21 @@ const Payments = ({ clientsData, paymentData }) => {
                 <div>
                   <h2>Payment Details</h2>
                   <p>
-                    <span>Amount Paid : </span>Rs.{payment.amount}
+                    <span>PaymentId: </span>#{payment.paymentId}
                   </p>
                   <p>
-                    <span>BankName : </span>State Bank Of India
+                    <span>OrderId : </span>#{payment.orderId}
                   </p>
                   <p>
-                    <span>State : </span>
-                    {client.state}
+                    <span>Amount : </span>Rs.{payment.amount / 100}
                   </p>
                   <p>
                     <span>Type : </span>
                     {payment.type}
                   </p>
                   <p>
-                    <span>PaymentID : </span>#{payment.paymentId}
+                    <span>Paid Date : </span>
+                    {payment.paidDate.split("T")[0]}
                   </p>
                 </div>
               </div>
@@ -244,7 +246,7 @@ const Payments = ({ clientsData, paymentData }) => {
                 <div>
                   <p>{client.brand}</p>
                   <p>{client.variant}</p>
-                  <p>{client.bookingDate.split("T")[0]}</p>
+                  <p>{moment(client.bookingDate).format("MMMM Do YYYY")}</p>
                   <p>{client.bookingTime}</p>
                 </div>
               </div>

@@ -298,7 +298,11 @@
 .userInfo div:nth-child(1) p:nth-child(6) {
   padding-left: 6.5rem;
 }
-.userInfo div:nth-child(2) p:nth-child(6) {
+.userInfo div:nth-child(2) p:nth-child(2) {
+  color: var(--text-warning);
+  letter-spacing: 0.2rem;
+}
+.userInfo div:nth-child(2) p:nth-child(3) {
   color: var(--text-warning);
   letter-spacing: 0.2rem;
 }
@@ -320,9 +324,6 @@
   font-weight: bold;
   letter-spacing: 0.1rem;
   margin-bottom: 1.5rem;
-}
-.userInfo div:nth-child(2) p:nth-child(6) {
-  color: var(--text-warning);
 }
 .demand {
   display: flex;

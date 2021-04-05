@@ -41,7 +41,7 @@ export async function getServerSideProps(context) {
   });
   const paymentData = await paymentRes.json();
 
-  const res = await fetch("http://localhost:8080/api/clients", {
+  const res = await fetch(`http://localhost:8080/api/clients/${"all"}`, {
     method: "GET",
     mode: "cors",
     credentials: "same-origin",

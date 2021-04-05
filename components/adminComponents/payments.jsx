@@ -7,8 +7,8 @@ import styles from "../../styles/adminDashboard/invoices.module.css";
 
 const Payments = ({ clientsData, paymentData }) => {
   const [modal, setModal] = useState(false);
-  const [clientId, setClientId] = useState();
-  const [name, setName] = useState();
+  const [payId, setPayId] = useState();
+  const [email, setEmail] = useState();
   const [error, setError] = useState(null);
   const [client, setClient] = useState({
     _id: "",
@@ -27,9 +27,10 @@ const Payments = ({ clientsData, paymentData }) => {
     dob: "",
   });
   const [payment, setPayment] = useState({
-    _id: "",
-    amount: "",
     paymentId: "",
+    orderId: "",
+    amount: "",
+    paidDate: "",
     type: "",
   });
   const [hide, setHide] = useContext(SideContext);
@@ -57,17 +58,17 @@ const Payments = ({ clientsData, paymentData }) => {
   };
 
   const searchUser = () => {
-    if (!clientId || !name) {
+    if (!payId || !email) {
       return setError("Please fill the required fields");
     }
-    var client = clientsData.filter((client) => {
-      return client._id === clientId && client.name === name;
+    var payment = paymentData.filter((payment) => {
+      return payment.paymentId === payId && payment.email === email;
     });
-    if (client.length === 0) {
+    if (payment.length === 0) {
       return setError("No User Found");
     }
-    var payment = paymentData.filter((payment) => {
-      return payment.email === client[0].email;
+    var client = clientsData.filter((client) => {
+      return client.email === payment[0].email;
     });
 
     setClient({
@@ -87,9 +88,10 @@ const Payments = ({ clientsData, paymentData }) => {
       dob: client[0].dob,
     });
     setPayment({
-      _id: payment[0]._id,
-      amount: payment[0].amount,
       paymentId: payment[0].paymentId,
+      orderId: payment[0].orderId,
+      amount: payment[0].amount,
+      paidDate: payment[0].createdAt,
       type: payment[0].type,
     });
     handleModal();
@@ -125,13 +127,13 @@ const Payments = ({ clientsData, paymentData }) => {
             list="clientId"
             required
             onChange={(e) => {
-              setClientId(e.target.value);
+              setPayId(e.target.value);
             }}
           />
-          <label>Client ID</label>
+          <label>Payment ID</label>
           <datalist id="clientId">
-            {clientsData.map((client, index) => {
-              return <option value={client._id} key={index} />;
+            {paymentData.map((client, index) => {
+              return <option value={client.paymentId} key={index} />;
             })}
           </datalist>
         </div>
@@ -141,13 +143,13 @@ const Payments = ({ clientsData, paymentData }) => {
             list="clientName"
             required
             onChange={(e) => {
-              setName(e.target.value);
+              setEmail(e.target.value);
             }}
           />
-          <label>Name</label>
+          <label>Email</label>
           <datalist id="clientName">
-            {clientsData.map((client, index) => {
-              return <option value={client.name} key={index} />;
+            {paymentData.map((client, index) => {
+              return <option value={client.email} key={index} />;
             })}
           </datalist>
         </div>
@@ -172,8 +174,8 @@ const Payments = ({ clientsData, paymentData }) => {
                 <h1>Client ID</h1>
                 <p>#{client._id}</p>
                 <h3>
-                  <span>Date : </span>
-                  {client.bookingDate.split("T")[0] +
+                  <span>Latest : </span>
+                  {moment(client.bookingDate).format("MMMM Do YYYY") +
                     " At " +
                     client.bookingTime}
                 </h3>
@@ -197,7 +199,7 @@ const Payments = ({ clientsData, paymentData }) => {
                 </p>
                 <p>
                   <span>Dob : </span>
-                  {client.dob}
+                  {moment(client.dob).format("MMMM Do YYYY")}
                 </p>
                 <p>
                   <span>Address : </span>H.no-{client.houseNumber}, Street.no-
@@ -209,21 +211,21 @@ const Payments = ({ clientsData, paymentData }) => {
               <div>
                 <h2>Payment Details</h2>
                 <p>
-                  <span>Amount Paid : </span>Rs.{payment.amount}
+                  <span>PaymentId: </span>#{payment.paymentId}
                 </p>
                 <p>
-                  <span>BankName : </span>State Bank Of India
+                  <span>OrderId : </span>#{payment.orderId}
                 </p>
                 <p>
-                  <span>State : </span>
-                  {client.state}
+                  <span>Amount : </span>Rs.{payment.amount / 100}
                 </p>
                 <p>
                   <span>Type : </span>
                   {payment.type}
                 </p>
                 <p>
-                  <span>PaymentID : </span>#{payment.paymentId}
+                  <span>Paid Date : </span>
+                  {payment.paidDate.split("T")[0]}
                 </p>
               </div>
             </div>
@@ -239,7 +241,7 @@ const Payments = ({ clientsData, paymentData }) => {
               <div>
                 <p>{client.brand}</p>
                 <p>{client.variant}</p>
-                <p>{client.bookingDate.split("T")[0]}</p>
+                <p>{moment(client.bookingDate).format("MMMM Do YYYY")}</p>
                 <p>{client.bookingTime}</p>
               </div>
             </div>
@@ -251,8 +253,11 @@ const Payments = ({ clientsData, paymentData }) => {
           <thead>
             <tr>
               <th>#</th>
-              <th>Client ID</th>
+              <th>Payment ID</th>
+              <th>Order ID</th>
+              <th>Name</th>
               <th>Email</th>
+              <th>Contact</th>
               <th>Paid Date</th>
               <th>Payment Amount</th>
               <th>Payment Type</th>
@@ -263,8 +268,11 @@ const Payments = ({ clientsData, paymentData }) => {
               return (
                 <tr key={index}>
                   <td>{index + 1}</td>
-                  <td>{payment._id}</td>
+                  <td>{payment.paymentId}</td>
+                  <td>{payment.orderId}</td>
+                  <td>{payment.name}</td>
                   <td>{payment.email}</td>
+                  <td>{payment.contact}</td>
                   <td>{moment(payment.createdAt).format("MMMM Do YYYY")}</td>
                   <td>{`₹ ${payment.amount / 100} /-`}</td>
                   <td>{payment.type}</td>

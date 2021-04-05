@@ -171,7 +171,7 @@ const DashBoard = (props) => {
                 {payments.map((payment, index) => {
                   return (
                     <tr key={index}>
-                      <td>{payment._id}</td>
+                      <td>{payment.paymentId}</td>
                       <td>{payment.email}</td>
                       <td>
                         {moment(payment.createdAt).format("MMMM Do YYYY")}
