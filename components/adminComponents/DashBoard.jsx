@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Link from "next/link";
 import moment from "moment";
 import { SideContext } from "./SideContext";
@@ -9,12 +9,17 @@ import styles from "../../styles/adminDashboard/dashboard.module.css";
 const DashBoard = (props) => {
   const [clients, setClients] = useState(props.clientsData);
   const [payments, setPayments] = useState(props.paymentData);
-
   const [hide, setHide] = useContext(SideContext);
+  const [total, setTotal] = useState(30000);
+  const [today, setToday] = useState(5000);
+  const [refund, setRefund] = useState(10000);
 
   const handleHide = () => {
     setHide((prev) => !prev);
   };
+
+  if (props.payCount.count / 100 >= total) setTotal((prev) => prev + 10000);
+  if (props.payCount.total / 100 >= today) setToday((prev) => prev + 5000);
 
   return (
     <div className={styles.dashboard}>
@@ -37,7 +42,7 @@ const DashBoard = (props) => {
           </div>
           <div className={styles.info}>
             <div>
-              <h1>15</h1>
+              <h1>{props.serviceCount.pend}</h1>
               <p>Today's Services</p>
             </div>
           </div>
@@ -51,8 +56,8 @@ const DashBoard = (props) => {
           </div>
           <div className={styles.info}>
             <div>
-              <h1>8</h1>
-              <p>User Admins</p>
+              <h1>{props.serviceCount.accept}</h1>
+              <p>Accepted</p>
             </div>
           </div>
         </div>
@@ -65,8 +70,8 @@ const DashBoard = (props) => {
           </div>
           <div className={styles.info}>
             <div>
-              <h1>85</h1>
-              <p>Total Services</p>
+              <h1>{props.serviceCount.prog}</h1>
+              <p>In Progress</p>
             </div>
           </div>
         </div>
@@ -79,8 +84,8 @@ const DashBoard = (props) => {
           </div>
           <div className={styles.info}>
             <div>
-              <h1>10</h1>
-              <p>Today's Pending</p>
+              <h1>{props.serviceCount.done}</h1>
+              <p>Today's Done</p>
             </div>
           </div>
         </div>
@@ -89,53 +94,57 @@ const DashBoard = (props) => {
       <div className={styles.second}>
         <div className={styles.s1}>
           <div>
-            <h1>Services</h1>
+            <h1>Total Earnings</h1>
           </div>
           <div className={styles.progress}>
-            <h1>81</h1>
-            <progress value="15" max="20"></progress>
+            <h1>
+              <i className="fas fa-rupee-sign"></i> {props.payCount.count / 100}
+            </h1>
+            <progress value={props.payCount.count / 100} max={total}></progress>
           </div>
           <div>
-            <p>Total Services 256.</p>
+            <p>Earnings out of {total}.</p>
           </div>
         </div>
 
         <div className={styles.s2}>
           <div>
-            <h1>Services</h1>
+            <h1>Today's Earning</h1>
           </div>
           <div className={styles.progress}>
-            <h1>81</h1>
-            <progress value="15" max="20"></progress>
+            <h1>
+              <i className="fas fa-rupee-sign"></i> {props.payCount.total / 100}
+            </h1>
+            <progress value={props.payCount.total / 100} max={today}></progress>
           </div>
           <div>
-            <p>Total Services 256.</p>
+            <p>Earnings out of {today}.</p>
           </div>
         </div>
 
         <div className={styles.s3}>
           <div>
-            <h1>Services</h1>
+            <h1>Refund</h1>
           </div>
           <div className={styles.progress}>
             <h1>81</h1>
             <progress value="15" max="20"></progress>
           </div>
           <div>
-            <p>Total Services 256.</p>
+            <p>Refund out of 256.</p>
           </div>
         </div>
 
         <div className={styles.s4}>
           <div>
-            <h1>Services</h1>
+            <h1>Total Services</h1>
           </div>
           <div className={styles.progress}>
-            <h1>81</h1>
-            <progress value="15" max="20"></progress>
+            <h1>{props.serviceCount.total}</h1>
+            <progress value={props.serviceCount.total} max="100"></progress>
           </div>
           <div>
-            <p>Total Services 256.</p>
+            <p>Total Services out of 100.</p>
           </div>
         </div>
       </div>

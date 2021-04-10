@@ -5,7 +5,13 @@ import SidePanel from "../components/adminComponents/SidePanel";
 import DashBoard from "../components/adminComponents/DashBoard";
 import styles from "../styles/adminDashboard/sidepanel.module.css";
 
-const adminDashBoard = ({ data, paymentData, adminRes }) => {
+const adminDashBoard = ({
+  data,
+  paymentData,
+  adminRes,
+  payCount,
+  serviceCount,
+}) => {
   return (
     <section id="dashboard">
       <Head>
@@ -17,7 +23,12 @@ const adminDashBoard = ({ data, paymentData, adminRes }) => {
       </Head>
       <div className={styles.main}>
         <SidePanel adminRes={adminRes} />
-        <DashBoard clientsData={data} paymentData={paymentData} />
+        <DashBoard
+          clientsData={data}
+          paymentData={paymentData}
+          payCount={payCount}
+          serviceCount={serviceCount}
+        />
       </div>
     </section>
   );
@@ -56,8 +67,24 @@ export async function getServerSideProps(context) {
 
   const adminRes = admin.data;
 
+  const pay = await fetch("http://localhost:8080/api/money-counts", {
+    method: "GET",
+    mode: "cors",
+    credentials: "same-origin",
+  });
+
+  const payCount = await pay.json();
+
+  const services = await fetch("http://localhost:8080/api/counts", {
+    method: "GET",
+    mode: "cors",
+    credentials: "same-origin",
+  });
+
+  const serviceCount = await services.json();
+
   return {
-    props: { data, paymentData, adminRes },
+    props: { data, paymentData, adminRes, payCount, serviceCount },
   };
 }
 

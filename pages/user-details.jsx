@@ -70,6 +70,7 @@ const UserDetails = () => {
         notes: {
           address: "Razorpay Corporate Office",
           name: state.name,
+          bookingDate: moment(state.bookingDate).toISOString(),
         },
         theme: {
           color: "#fdd600",
@@ -276,9 +277,10 @@ const UserDetails = () => {
           </div>
           <div className={styles.infoContainer}>
             <p className={styles.info}>
-              You selected a service booking for DUKE 250 at 3:00 pm on February
-              27, 2021. Please provide your details in the form below to proceed
-              with the booking.
+              You selected a service booking for {state.variant} at{" "}
+              {state.bookingTime} pm on{" "}
+              {moment(state.bookingDate).format("MMMM Do YYYY")}. Please provide
+              your details in the form below to proceed with the booking.
             </p>
           </div>
         </div>

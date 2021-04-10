@@ -48,8 +48,8 @@ const FixDate = () => {
         </div>
         <div className={styles.infoContainer}>
           <p className={styles.info}>
-            Below you can find a list of available time slots for your DUKE 250
-            service.
+            Below you can find a list of available time slots for your{" "}
+            {state.variant} service.
             <br />
             Click on a time slot to proceed with booking.
           </p>
