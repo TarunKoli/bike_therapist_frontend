@@ -60,7 +60,7 @@ const Reset = () => {
     }
     try {
       const res = await axios({
-        url: `http://localhost:8080/api/reset/${router.query.reset}`,
+        url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reset/${router.query.reset}`,
         method: "PATCH",
         data: {
           email,

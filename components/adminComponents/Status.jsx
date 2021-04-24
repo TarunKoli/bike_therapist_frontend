@@ -27,7 +27,7 @@ const Status = (props) => {
     console.log("id : ", e.target.id);
     //send status and customer id to the backend
     axios({
-      url: `http://localhost:8080/api/booking-status?id=${e.target.id}`,
+      url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/booking-status?id=${e.target.id}`,
       method: "PATCH",
       data: {
         status: e.target.value,

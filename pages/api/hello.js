@@ -2,8 +2,8 @@ const webPush = require("web-push");
 
 webPush.setVapidDetails(
   `mailto:test@test.com`,
-  "BN0HkPWSxoxJ0QpIPAexxl2GtDcuz-zz4wrOVizytHWOqlYg55txxnalEH4IxJz6KV1E4vcoTzI2bjpZZOVUp3M",
-  "1nNQojv-DPuf0rurHlCgqTzTvzmylF7hYVP5IQVf8Nc"
+  process.env.NEXT_PUBLIC_PUSH_PUBLIC_KEY,
+  process.env.NEXT_PUBLIC_PUSH_PRIVATE_KEY
 );
 
 export default (req, res) => {

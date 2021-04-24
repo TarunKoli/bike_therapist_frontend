@@ -34,22 +34,28 @@ export async function getServerSideProps(context) {
     context.res.writeHead(302, { Location: "/" });
     context.res.end();
   }
-  const paymentRes = await fetch("http://localhost:8080/api/payments", {
-    method: "GET",
-    mode: "cors",
-    credentials: "same-origin",
-  });
+  const paymentRes = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/payments`,
+    {
+      method: "GET",
+      mode: "cors",
+      credentials: "same-origin",
+    }
+  );
   const paymentData = await paymentRes.json();
 
-  const res = await fetch(`http://localhost:8080/api/clients/${"all"}`, {
-    method: "GET",
-    mode: "cors",
-    credentials: "same-origin",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clients/${"all"}`,
+    {
+      method: "GET",
+      mode: "cors",
+      credentials: "same-origin",
+    }
+  );
   const data = await res.json();
 
   const admin = await axios({
-    url: "http://localhost:8080/api/get-user",
+    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-user`,
     headers: context.req ? { cookie: context.req.headers.cookie } : undefined,
   });
   const adminRes = admin.data;

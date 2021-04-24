@@ -50,7 +50,7 @@ const NavBar = () => {
         reg.pushManager.subscribe({
           userVisibleOnly: true,
           applicationServerKey: base64ToUint8Array(
-            "BN0HkPWSxoxJ0QpIPAexxl2GtDcuz-zz4wrOVizytHWOqlYg55txxnalEH4IxJz6KV1E4vcoTzI2bjpZZOVUp3M"
+            process.env.NEXT_PUBLIC_PUSH_PUBLIC_KEY
           ),
         });
       });
@@ -59,9 +59,9 @@ const NavBar = () => {
 
   useEffect(() => {
     let userId = window.localStorage.getItem("userId");
-    socket = io("http://localhost:8080");
+    socket = io(`${process.env.NEXT_PUBLIC_BACKEND_URL}`);
     axios({
-      url: "http://localhost:8080/api/is-user",
+      url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/is-user`,
       method: "POST",
       data: {
         userId: userId,
@@ -88,7 +88,7 @@ const NavBar = () => {
   });
 
   const sendNotificationButtonOnClick = async () => {
-    await fetch("http://localhost:8080/api/subscribe", {
+    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/subscribe`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -102,7 +102,7 @@ const NavBar = () => {
   const handleLogout = () => {
     if (userData) {
       axios({
-        url: "http://localhost:8080/api/logout",
+        url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/logout`,
         method: "GET",
         withCredentials: true,
       })

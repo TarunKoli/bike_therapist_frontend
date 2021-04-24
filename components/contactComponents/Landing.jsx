@@ -29,7 +29,7 @@ const Landing = () => {
     setSpin((prev) => !prev);
     try {
       const Contacted = await axios({
-        url: "http://localhost:8080/api/contact-us",
+        url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/contact-us`,
         data: {
           name,
           email,

@@ -45,41 +45,54 @@ export async function getServerSideProps(context) {
     context.res.writeHead(302, { Location: "/" });
     context.res.end();
   }
-  const res = await fetch(`http://localhost:8080/api/clients/${"limit"}`, {
-    method: "GET",
-    mode: "cors",
-    credentials: "same-origin",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clients/${"limit"}`,
+    {
+      method: "GET",
+      mode: "cors",
+      credentials: "same-origin",
+    }
+  );
   const data = await res.json();
 
-  const paymentRes = await fetch("http://localhost:8080/api/payments", {
-    method: "GET",
-    mode: "cors",
-    credentials: "same-origin",
-  });
+  const paymentRes = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/payments`,
+    {
+      method: "GET",
+      mode: "cors",
+      credentials: "same-origin",
+    }
+  );
 
   const paymentData = await paymentRes.json();
 
   const admin = await axios({
-    url: "http://localhost:8080/api/get-user",
+    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-user`,
+    method: "GET",
     headers: context.req ? { cookie: context.req.headers.cookie } : undefined,
   });
 
   const adminRes = admin.data;
 
-  const pay = await fetch("http://localhost:8080/api/money-counts", {
-    method: "GET",
-    mode: "cors",
-    credentials: "same-origin",
-  });
+  const pay = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/money-counts`,
+    {
+      method: "GET",
+      mode: "cors",
+      credentials: "same-origin",
+    }
+  );
 
   const payCount = await pay.json();
 
-  const services = await fetch("http://localhost:8080/api/counts", {
-    method: "GET",
-    mode: "cors",
-    credentials: "same-origin",
-  });
+  const services = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/counts`,
+    {
+      method: "GET",
+      mode: "cors",
+      credentials: "same-origin",
+    }
+  );
 
   const serviceCount = await services.json();
 

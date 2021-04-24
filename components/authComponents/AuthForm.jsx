@@ -56,7 +56,7 @@ const AuthForm = () => {
     }
     try {
       const res = await axios({
-        url: "http://localhost:8080/api/signup",
+        url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/signup`,
         data: {
           name,
           email,
@@ -93,7 +93,7 @@ const AuthForm = () => {
     setSpin((prev) => !prev);
     try {
       const res = await axios({
-        url: "http://localhost:8080/api/signin",
+        url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/signin`,
         method: "POST",
         data: {
           email,

@@ -46,7 +46,7 @@ const UserDetails = () => {
     }
 
     const resOptions = await axios({
-      url: "http://localhost:8080/api/payment",
+      url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/payment`,
       method: "GET",
     });
 
@@ -78,7 +78,7 @@ const UserDetails = () => {
         handler: async function (response) {
           try {
             const saveUserData = await axios({
-              url: "http://localhost:8080/api/booking",
+              url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/booking`,
               method: "POST",
               data: {
                 brand: state.brand,
@@ -103,11 +103,11 @@ const UserDetails = () => {
               alert(response.razorpay_order_id);
               alert(response.razorpay_signature);
               //sending socket events to backend
-              socket = io("http://localhost:8080");
+              socket = io(`${process.env.NEXT_PUBLIC_BACKEND_URL}`);
               socket.emit("newBooking", { msg: "new booking" });
 
               axios({
-                url: "http://localhost:8080/api/paymentId",
+                url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/paymentId`,
                 method: "PATCH",
                 data: {
                   id: response.razorpay_payment_id,
@@ -118,7 +118,7 @@ const UserDetails = () => {
               });
               //send req to the backend for the invoice and download it
               axios({
-                url: "http://localhost:8080/api/generate-invoice",
+                url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/generate-invoice`,
                 method: "POST",
                 data: {
                   name: state.name,
@@ -173,7 +173,7 @@ const UserDetails = () => {
     ) {
       try {
         const validationData = await axios({
-          url: "http://localhost:8080/api/validate-booking",
+          url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/validate-booking`,
           method: "POST",
           data: {
             brand: state.brand,

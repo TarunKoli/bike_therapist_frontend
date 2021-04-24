@@ -25,7 +25,7 @@ const SidePanel = ({ adminRes }) => {
   useEffect(() => {
     let userId = window.localStorage.getItem("userId");
     axios({
-      url: "http://localhost:8080/api/is-user",
+      url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/is-user`,
       method: "POST",
       data: {
         userId: userId,
@@ -58,7 +58,7 @@ const SidePanel = ({ adminRes }) => {
   const handleLogout = () => {
     if (userData) {
       axios({
-        url: "http://localhost:8080/api/logout",
+        url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/logout`,
         method: "GET",
         withCredentials: true,
       })
@@ -128,7 +128,7 @@ const SidePanel = ({ adminRes }) => {
               if (imgUrl) {
                 console.log(imgUrl);
                 axios({
-                  url: "http://localhost:8080/api/change-image",
+                  url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/change-image`,
                   method: "POST",
                   data: {
                     profileImage: imgUrl,
@@ -147,7 +147,7 @@ const SidePanel = ({ adminRes }) => {
       );
     } else {
       axios({
-        url: "http://localhost:8080/api/update-details",
+        url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/update-details`,
         method: "POST",
         data: {
           email,

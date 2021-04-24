@@ -46,7 +46,7 @@ const Forgot = () => {
     e.preventDefault();
     try {
       const res = await axios({
-        url: "http://localhost:8080/api/forgot",
+        url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgot`,
         method: "POST",
         data: {
           email: email,
