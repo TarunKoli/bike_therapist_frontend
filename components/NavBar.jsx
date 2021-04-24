@@ -6,11 +6,57 @@ import { io } from "socket.io-client";
 import navStyle from "../styles/NavBar.module.css";
 let socket;
 
+const base64ToUint8Array = (base64) => {
+  const padding = "=".repeat((4 - (base64.length % 4)) % 4);
+  const b64 = (base64 + padding).replace(/-/g, "+").replace(/_/g, "/");
+
+  const rawData = window.atob(b64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+};
+
 const NavBar = () => {
   const [control, setControl] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [userData, setUserData] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [subscription, setSubscription] = useState(null);
   const router = useRouter();
+
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      "serviceWorker" in navigator &&
+      window.workbox !== undefined
+    ) {
+      // run only in browser
+      navigator.serviceWorker.ready.then((reg) => {
+        reg.pushManager.getSubscription().then((sub) => {
+          if (
+            sub &&
+            !(
+              sub.expirationTime &&
+              Date.now() > sub.expirationTime - 5 * 60 * 1000
+            )
+          ) {
+            setSubscription(sub);
+            setIsSubscribed(true);
+          }
+        });
+        reg.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: base64ToUint8Array(
+            "BN0HkPWSxoxJ0QpIPAexxl2GtDcuz-zz4wrOVizytHWOqlYg55txxnalEH4IxJz6KV1E4vcoTzI2bjpZZOVUp3M"
+          ),
+        });
+      });
+    }
+  }, []);
+
   useEffect(() => {
     let userId = window.localStorage.getItem("userId");
     socket = io("http://localhost:8080");
@@ -25,10 +71,11 @@ const NavBar = () => {
       .then((res) => {
         setUserData(res.data.isLoggedin);
         if (res.data.isLoggedin) {
-          // const audio = new Audio("/alert.mp3");
-          // audio.play();
           socket.on("notification", (payload) => {
-            alert(payload.msg);
+            const audio = new Audio("/alert.mp3");
+            audio.play();
+            sendNotificationButtonOnClick();
+            // alert(payload.msg);
           });
         }
       })
@@ -39,6 +86,19 @@ const NavBar = () => {
       socket.off("notification");
     };
   });
+
+  const sendNotificationButtonOnClick = async () => {
+    await fetch("http://localhost:8080/api/subscribe", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        subscription,
+      }),
+    });
+  };
+
   const handleLogout = () => {
     if (userData) {
       axios({

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import style from "../../styles/Landing.module.css";
+import PwaButton from "./PwaButton";
 
 const Landing = () => {
   return (
@@ -13,6 +14,7 @@ const Landing = () => {
         <Link href="/book-service">
           <button>Book A Service &rarr;</button>
         </Link>
+        <PwaButton />
       </div>
     </section>
   );
