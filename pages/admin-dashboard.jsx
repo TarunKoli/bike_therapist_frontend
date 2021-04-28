@@ -66,13 +66,16 @@ export async function getServerSideProps(context) {
 
   const paymentData = await paymentRes.json();
 
-  const admin = await axios({
-    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-user`,
-    method: "GET",
-    headers: context.req ? { cookie: context.req.headers.cookie } : undefined,
-  });
+  let admin = null;
+  let adminRes = null;
+  if (context.req.headers.cookie) {
+    admin = await axios({
+      url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-user`,
+      headers: context.req ? { cookie: context.req.headers.cookie } : undefined,
+    });
 
-  const adminRes = admin.data;
+    adminRes = admin.data;
+  }
 
   const pay = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/money-counts`,
