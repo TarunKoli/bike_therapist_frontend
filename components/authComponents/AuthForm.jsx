@@ -5,6 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import style from "../../styles/AuthStyles/AuthForm.module.css";
+import { setCookie } from "nookies";
 
 const AuthForm = () => {
   const [isEmailFieldEmpty, setIsEmailFieldEmpty] = useState(true);
@@ -102,6 +103,10 @@ const AuthForm = () => {
         withCredentials: true,
       });
       if (res.status === 200) {
+        setCookie(null, "jwt", res.data.token, {
+          maxAge: 30 * 24 * 60 * 60,
+          path: "/",
+        });
         window.localStorage.setItem("userId", res.data.userId);
         setEmail("");
         setPassword("");
