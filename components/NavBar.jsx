@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { io } from "socket.io-client";
 import navStyle from "../styles/NavBar.module.css";
+import cookies, { destroyCookie } from "nookies";
 let socket;
 
 const base64ToUint8Array = (base64) => {
@@ -65,6 +66,7 @@ const NavBar = () => {
       method: "POST",
       data: {
         userId: userId,
+        token: cookies.get("jwt"),
       },
       withCredentials: true,
     })
@@ -103,13 +105,17 @@ const NavBar = () => {
     if (userData) {
       axios({
         url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/logout`,
-        method: "GET",
+        method: "POST",
+        data: {
+          token: cookies.get("jwt"),
+        },
         withCredentials: true,
       })
         .then((res) => {
           if (res.status === 200) {
             window.localStorage.removeItem("userId");
             router.reload("/");
+            destroyCookie(null, "jwt");
           }
         })
         .catch((error) => {

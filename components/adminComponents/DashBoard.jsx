@@ -7,16 +7,72 @@ import Status from "./Status";
 import styles from "../../styles/adminDashboard/dashboard.module.css";
 
 const DashBoard = (props) => {
-  const [clients, setClients] = useState(props.clientsData);
   const [payments, setPayments] = useState(props.paymentData);
   const [hide, setHide] = useContext(SideContext);
   const [total, setTotal] = useState(30000);
   const [today, setToday] = useState(5000);
   const [refund, setRefund] = useState(10000);
-
+  let pending = 0;
+  let accepted = 0;
+  let completed = 0;
+  let progress = 0;
   const handleHide = () => {
     setHide((prev) => !prev);
   };
+
+  pending = props.clientsData.filter((customer, index) => {
+    return (
+      new Date().toLocaleDateString() ===
+        new Date(customer.bookingDate).toLocaleDateString() &&
+      customer.status.toLowerCase() === "pending"
+    );
+  });
+  progress = props.clientsData.filter((customer, index) => {
+    return (
+      new Date().toLocaleDateString() ===
+        new Date(customer.bookingDate).toLocaleDateString() &&
+      customer.status.toLowerCase() === "progress"
+    );
+  });
+  completed = props.clientsData.filter((customer, index) => {
+    return (
+      new Date().toLocaleDateString() ===
+        new Date(customer.bookingDate).toLocaleDateString() &&
+      customer.status.toLowerCase() === "completed"
+    );
+  });
+  accepted = props.clientsData.filter((customer, index) => {
+    return (
+      new Date().toLocaleDateString() ===
+        new Date(customer.bookingDate).toLocaleDateString() &&
+      customer.status.toLowerCase() === "accepted"
+    );
+  });
+
+  const booking = props.clientsData.map((client, index) => {
+    if (
+      new Date().toLocaleDateString().toString() ===
+      new Date(client.bookingDate).toLocaleDateString().toString()
+    ) {
+      return (
+        <tr key={index}>
+          <td>{client._id}</td>
+          <td>{client.name}</td>
+          <td>{client.email}</td>
+          <td>{client.brand}</td>
+          <td>{client.variant}</td>
+          <td className={styles.bookingDate}>
+            {moment(client.bookingDate).format("MMMM Do YYYY")}
+          </td>
+          <td className={styles.bookingTime}>{client.bookingTime}</td>
+          <td>{client.phone}</td>
+          <td className={styles.decide}>
+            <Status id={client._id} status={client.status} />
+          </td>
+        </tr>
+      );
+    }
+  });
 
   if (props.payCount.count / 100 >= total) setTotal((prev) => prev + 10000);
   if (props.payCount.total / 100 >= today) setToday((prev) => prev + 5000);
@@ -42,7 +98,7 @@ const DashBoard = (props) => {
           </div>
           <div className={styles.info}>
             <div>
-              <h1>{props.serviceCount.pend}</h1>
+              <h1>{pending.length}</h1>
               <p>Today's Services</p>
             </div>
           </div>
@@ -56,7 +112,7 @@ const DashBoard = (props) => {
           </div>
           <div className={styles.info}>
             <div>
-              <h1>{props.serviceCount.accept}</h1>
+              <h1>{accepted.length}</h1>
               <p>Accepted</p>
             </div>
           </div>
@@ -70,7 +126,7 @@ const DashBoard = (props) => {
           </div>
           <div className={styles.info}>
             <div>
-              <h1>{props.serviceCount.prog}</h1>
+              <h1>{progress.length}</h1>
               <p>In Progress</p>
             </div>
           </div>
@@ -84,7 +140,7 @@ const DashBoard = (props) => {
           </div>
           <div className={styles.info}>
             <div>
-              <h1>{props.serviceCount.done}</h1>
+              <h1>{completed.length}</h1>
               <p>Today's Done</p>
             </div>
           </div>
@@ -220,29 +276,7 @@ const DashBoard = (props) => {
                   <th>status</th>
                 </tr>
               </thead>
-              <tbody>
-                {clients.map((client, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{client._id}</td>
-                      <td>{client.name}</td>
-                      <td>{client.email}</td>
-                      <td>{client.brand}</td>
-                      <td>{client.variant}</td>
-                      <td className={styles.bookingDate}>
-                        {moment(client.bookingDate).format("MMMM Do YYYY")}
-                      </td>
-                      <td className={styles.bookingTime}>
-                        {client.bookingTime}
-                      </td>
-                      <td>{client.phone}</td>
-                      <td className={styles.decide}>
-                        <Status id={client._id} status={client.status} />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
+              <tbody>{booking}</tbody>
             </table>
           </div>
 

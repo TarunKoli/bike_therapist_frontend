@@ -40,7 +40,6 @@ const Landing = () => {
       });
 
       if (Contacted.status === 200) {
-        console.log("entered");
         setName("");
         setEmail("");
         setMsg("");

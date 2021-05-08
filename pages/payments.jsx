@@ -45,7 +45,7 @@ export async function getServerSideProps(context) {
   const paymentData = await paymentRes.json();
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clients/${"all"}`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clients`,
     {
       method: "GET",
       mode: "cors",

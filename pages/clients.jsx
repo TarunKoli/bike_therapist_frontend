@@ -35,7 +35,7 @@ export async function getServerSideProps(context) {
     context.res.end();
   }
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clients/${"all"}`,
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/clients`,
     {
       method: "GET",
       mode: "cors",
