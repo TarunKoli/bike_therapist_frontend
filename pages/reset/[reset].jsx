@@ -13,6 +13,7 @@ const Reset = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
+  const [spin, setSpin] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -55,6 +56,7 @@ const Reset = () => {
 
   const handleReset = async (e) => {
     e.preventDefault();
+    setSpin((prev) => !prev);
     if (password !== confirmPassword) {
       return setError("password does not match");
     }
@@ -69,6 +71,7 @@ const Reset = () => {
         withCredentials: true,
       });
       if (res.status === 201) {
+        setSpin((prev) => !prev);
         toast.error(res.data.message, {
           position: "top-center",
           autoClose: 5000,
@@ -81,7 +84,7 @@ const Reset = () => {
         router.replace("/");
       }
     } catch (error) {
-      console.log(error);
+      setSpin((prev) => !prev);
       setError(error.response.data.msg);
     }
   };
@@ -176,7 +179,21 @@ const Reset = () => {
                 <label htmlFor="confirmPassword">confirm password</label>
               </div>
               <div className={style.btnGrp}>
-                <button type="submit">reset password</button>
+                <button className={spin ? `${style.hide}` : ``} type="submit">
+                  reset password
+                </button>
+                <button
+                  type="button"
+                  className={spin ? `${style.spinner}` : `${style.hide}`}
+                  disabled
+                >
+                  <span
+                    className={`spinner-border spinner-border-sm ${style.spin}`}
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Processing...
+                </button>
               </div>
             </form>
           </div>

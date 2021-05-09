@@ -11,6 +11,7 @@ const Forgot = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
   const [progress, setProgress] = useState(0);
+  const [spin, setSpin] = useState(false);
   useEffect(() => {
     if (error) {
       toast.error(error, {
@@ -44,6 +45,7 @@ const Forgot = () => {
   };
   const handleForgot = async (e) => {
     e.preventDefault();
+    setSpin((prev) => !prev);
     try {
       const res = await axios({
         url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/forgot`,
@@ -59,6 +61,7 @@ const Forgot = () => {
         },
       });
       if (res.status === 200) {
+        setSpin((prev) => !prev);
         toast.success(res.data, {
           position: "top-center",
           autoClose: 5000,
@@ -70,6 +73,7 @@ const Forgot = () => {
         });
       }
     } catch (err) {
+      setSpin((prev) => !prev);
       setError(err.response.data.msg);
     }
   };
@@ -155,7 +159,21 @@ const Forgot = () => {
                 ></div>
               </div>
               <div className={style.btnGrp}>
-                <button type="submit mt-4">get email</button>
+                <button className={spin ? `${style.hide}` : ``} type="submit">
+                  get email
+                </button>
+                <button
+                  type="button"
+                  className={spin ? `${style.spinner}` : `${style.hide}`}
+                  disabled
+                >
+                  <span
+                    className={`spinner-border spinner-border-sm ${style.spin}`}
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Processing...
+                </button>
               </div>
             </form>
           </div>
