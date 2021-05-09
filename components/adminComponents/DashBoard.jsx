@@ -16,6 +16,7 @@ const DashBoard = (props) => {
   let accepted = 0;
   let completed = 0;
   let progress = 0;
+  let todayCounts = 0;
   const handleHide = () => {
     setHide((prev) => !prev);
   };
@@ -48,7 +49,14 @@ const DashBoard = (props) => {
       customer.status.toLowerCase() === "accepted"
     );
   });
-
+  props.paymentData.forEach((payment) => {
+    if (
+      new Date().toLocaleDateString() ===
+      new Date(payment.bookingDate).toLocaleDateString()
+    ) {
+      todayCounts += payment.amount;
+    }
+  });
   const booking = props.clientsData.map((client, index) => {
     if (
       new Date().toLocaleDateString().toString() ===
@@ -169,7 +177,7 @@ const DashBoard = (props) => {
           </div>
           <div className={styles.progress}>
             <h1>
-              <i className="fas fa-rupee-sign"></i> {props.payCount.total / 100}
+              <i className="fas fa-rupee-sign"></i> {todayCounts / 100}
             </h1>
             <progress value={props.payCount.total / 100} max={today}></progress>
           </div>
@@ -288,7 +296,5 @@ const DashBoard = (props) => {
     </div>
   );
 };
-
-//{{moment(task.deadLine).format('MMMM Do YYYY, h:mm:ss a')}}
 
 export default DashBoard;

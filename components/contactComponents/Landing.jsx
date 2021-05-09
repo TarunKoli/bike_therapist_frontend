@@ -45,7 +45,7 @@ const Landing = () => {
         setMsg("");
         setSpin((prev) => !prev);
         toast.success(
-          "Your query has been delivered to admin,we'll contact you soon with detail",
+          "Your query has been delivered to admin, we'll contact you soon with details",
           {
             position: "top-center",
             autoClose: 5000,
