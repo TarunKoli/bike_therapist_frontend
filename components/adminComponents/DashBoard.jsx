@@ -179,7 +179,7 @@ const DashBoard = (props) => {
             <h1>
               <i className="fas fa-rupee-sign"></i> {todayCounts / 100}
             </h1>
-            <progress value={props.payCount.total / 100} max={today}></progress>
+            <progress value={todayCounts / 100} max={today}></progress>
           </div>
           <div>
             <p>Earnings out of {today}.</p>
