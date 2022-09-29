@@ -33,8 +33,10 @@ Works on the idea of CRUD operations. Add new bookings updating users automatica
 - Handling the paymets, booking status, booking details etc.
 - Additionaly describes the hike, growth, and profit status through graphs.
 
-## **About page**
+## **About Page**
 
-## **Services page**
+## **Services Page**
 
 ## **Process Detail Page**
+
+## **Support Page**
