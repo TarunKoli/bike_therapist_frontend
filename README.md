@@ -40,6 +40,7 @@ Works on the idea of CRUD operations. Add new bookings updating users automatica
 - Additionaly describes the hike, growth, and profit status through graphs.
 
 <div style="display:flex; margin-bottom: 0.5rem;">
+<img src="./assets/signin.png" width="200px" style="margin-right:0.5rem" />
 <img src="./assets/dashboard_mob.png" width="200px" style="margin-right:0.5rem" />
 <img src="./assets/dashboard_mob2.png" width="200px" style="margin-right:0.5rem" />
 </div>
